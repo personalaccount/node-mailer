@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
  N.B: environment variable will be injected by Heroku
  Fallback to 5000 as default
 */
-
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT);
