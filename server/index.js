@@ -1,14 +1,18 @@
-// Import express lib
-const express = require('express');
+// Import necessary libs
+const express = require('express'); // app framework
+const passport = require('passport'); // authentication middleware for Node.js
+const passGoogleStrategy = require('passport-google-oauth20').Strategy; // google strategy for passport
+
+// Import clientid and secret keys
+const keys = require('./config/keys');
 
 // Create an express application
 const app = express();
 
+passport.use(new passGoogleStrategy());
+
 // Routes
 
-app.get('/', (req, res) => {
-    res.send({ hi: 'there' });
-});
 
 /*
  Dynamic port binding for Heroku
