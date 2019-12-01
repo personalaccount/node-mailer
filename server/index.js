@@ -9,10 +9,25 @@ const keys = require('./config/keys');
 // Create an express application
 const app = express();
 
-passport.use(new passGoogleStrategy());
+passport.use(
+    new passGoogleStrategy({
+        clientID: keys.googleClientID,
+        clientSecret: keys.googleClientSecret,
+        callbackURL: '/auth/google/callback' // the route that the user will be sent to after they grant permissions to the application
+    }, (accessToken) => {
+        console.log(accessToken);
+    })
+);
 
 // Routes
 
+// Auth route handler Oauth flow is managed by passport
+app.get(
+    '/auth/google',
+    passport.authenticate('google',{
+        scope: ['profile', 'email']
+    })
+);
 
 /*
  Dynamic port binding for Heroku
