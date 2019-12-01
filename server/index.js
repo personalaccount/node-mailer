@@ -1,12 +1,18 @@
 // Import necessary libs
-const express = require('express'); // app framework
+const express = require('express'); // Express app framework
 const passport = require('passport'); // authentication middleware for Node.js
 const passGoogleStrategy = require('passport-google-oauth20').Strategy; // google strategy for passport
 
 // Import clientid and secret keys
 const keys = require('./config/keys');
 
-// Create an express application
+/*
+ Dynamic port binding for Heroku
+ N.B: environment variable will be injected by Heroku Fallback to 5000 as default
+*/
+const PORT = process.env.PORT || 5000;
+
+// Create an Express application
 const app = express();
 
 passport.use(
@@ -14,8 +20,10 @@ passport.use(
         clientID: keys.googleClientID,
         clientSecret: keys.googleClientSecret,
         callbackURL: '/auth/google/callback' // the route that the user will be sent to after they grant permissions to the application
-    }, (accessToken) => {
-        console.log(accessToken);
+    }, (accessToken, refreshToken, profile, done) => {
+        console.log('accessToken: ', accessToken);
+        console.log('refreshToken: ', refreshToken);
+        console.log('profile: ', profile);
     })
 );
 
@@ -29,11 +37,11 @@ app.get(
     })
 );
 
-/*
- Dynamic port binding for Heroku
- N.B: environment variable will be injected by Heroku
- Fallback to 5000 as default
-*/
-const PORT = process.env.PORT || 5000;
+
+// Handle google oauth redirect
+app.get(
+    '/auth/google/callback',
+    passport.authenticate('google')
+    );
 
 app.listen(PORT);
