@@ -1,8 +1,6 @@
 const passport = require('passport'); // authentication middleware for Node.js
 const passGoogleStrategy = require('passport-google-oauth20').Strategy; // google strategy for passport
-
-// Import clientid and secret keys
-const keys = require('../config/keys');
+const keys = require('../config/keys'); // Import clientid and secret keys
 
 passport.use(
     new passGoogleStrategy({
