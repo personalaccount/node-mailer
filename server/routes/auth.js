@@ -14,7 +14,7 @@ passport.use(
     })
 );
 
-module.exports = app => {
+module.exports = function (app) {
     // Auth route handler Oauth flow is managed by passport
     app.get(
         '/auth/google',

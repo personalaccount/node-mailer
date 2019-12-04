@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 5000;
 // Create an Express application
 const app = express();
 
+// require auth.js file returns an anonymous function (module.exports)
 require('./routes/auth')(app);
 
 app.listen(PORT);
