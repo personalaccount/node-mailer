@@ -1,11 +1,12 @@
-// Import necessary libs
-const express = require('express'); // Express app framework
+// Import necessary libsc
+const keys = require('./config/keys');
+const express = require('express');
+const mongoose = require('mongoose');
 
-/*
- Dynamic port binding for Heroku
- N.B: environment variable will be injected by Heroku Fallback to 5000 as default
-*/
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000; // Dynamic port binding - environment variable will be injected by Heroku Fallback to 5000 as default
+
+// Connect to Mongo (cloud based)
+mongoose.connect(keys.mongoURI);
 
 // Create an Express application
 const app = express();
