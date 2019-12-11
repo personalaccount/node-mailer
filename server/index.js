@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const PORT = process.env.PORT || 5000; // Dynamic port binding - environment variable will be injected by Heroku Fallback to 5000 as default
 
 // load mongo user schema
-require('models/User');
+require('./models/User');
 
 
 // Connect to Mongo (cloud based)
