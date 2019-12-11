@@ -15,7 +15,7 @@ passport.use(
         // Create a new instance of user
         new User({
             googleId: profile.id
-        });
+        }).save();
         // console.log('accessToken: ', accessToken, '\n',
         //     'refreshToken: ', refreshToken, '\n',
         //     'profile: ', profile);
