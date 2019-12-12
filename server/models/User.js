@@ -4,11 +4,8 @@ const Schema = mongoose.Schema;
 
 // Create a user schema and pass an object to describe all the properties
 const userSchema = new Schema ({
-    googleId: String,
-    firstName: String,
-    lastName: String
+    googleId: String
 });
 
 // Load the user schema into Mongoose
 mongoose.model('users', userSchema);
-
