@@ -23,11 +23,13 @@ passport.use(
       // Check to see if the user is already registered
       User.findOne({ googleId: profile.id }).then(existingUser => {
         if (existingUser) {
-          console.log(
-            "User with googleId:" + profile.id + " already exists!"
-          );
+          console.log("User with googleId:" + profile.id + " already exists!");
+          done(null, existingUser);
         } else {
-          // Create a new instance of user
+          /* Create a new instance of user and save it to MongoDB
+          Saved user instance will also be passed back by a
+           Promise callback
+           */
           new User({
             googleId: profile.id,
             firstName: profile._json.given_name,
@@ -35,7 +37,9 @@ passport.use(
             email: profile._json.email,
             accessToken: accessToken,
             refreshToken: refreshToken
-          }).save();
+          })
+            .save()
+            .then(user => done(null, user));
         }
       });
     }
