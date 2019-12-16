@@ -12,6 +12,17 @@ const keys = require("../config/keys");
 // Fetch the users model from mongoose
 const User = mongoose.model("users"); // User is now a model class - which represents the entire collection
 
+// Define serialization function and pass it on to passport
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  User.findById(id).then(user => {
+    done(null, user);
+  });
+});
+
 passport.use(
   new passGoogleStrategy(
     {
