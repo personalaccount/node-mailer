@@ -18,8 +18,8 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById(id).then(user => {
-    done(null, user);
+  User.findById(id).then( (err, user) => {
+    done(err, user);
   });
 });
 
@@ -68,4 +68,9 @@ module.exports = function(app) {
 
   // Handle google oauth redirect
   app.get("/auth/google/callback", passport.authenticate("google"));
+
+  app.get("/api/user", (req, res) => {
+    console.log(req);
+    res.send(req.user);
+  });
 };
