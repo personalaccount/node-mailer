@@ -60,26 +60,35 @@ passport.use(
 module.exports = function(app) {
   // Auth route handler Oauth flow is managed by passport
   app.get(
-      "/auth/google",
-      passport.authenticate("google", {
-        scope: ["profile", "email"]
-      })
+    "/auth/google",
+    passport.authenticate("google", {
+      scope: ["profile", "email"]
+    })
   );
 
   // Handle google oauth redirect
-  app.get("/auth/google/callback", passport.authenticate("google"));
+  app.get(
+    "/auth/google/callback",
+    passport.authenticate("google"),
+    (req, res) => {
+      res.send("Logged in");
+    }
+  );
 
-  app.get('/auth/logout', (req, res) => {
+  app.get("/logout", (req, res) => {
     /*
       The logout() function is automatically attached by passport to the request object.
       It takes the cookie that contains the user's id and removes the id from the cookie.
     */
-    console.log("Logging out...");
+    // console.log("Logging out...");
     req.logout();
-    res.send(req.user);
+    res.redirect("/api/user");
   });
 
   app.get("/api/user", (req, res) => {
+    if (req.user == null) {
+      res.send('<a href="/auth/google">Log in with Google</a>');
+    }
     res.send(req.user);
   });
 };
