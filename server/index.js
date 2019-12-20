@@ -4,12 +4,12 @@ const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const keys = require("./config/keys"); // settings and keys
+require("./models/User"); // define and load mongo user schema
+require('./services/passport-handler');
+
 
 // Connect to Mongo (cloud based)
 mongoose.connect(keys.mongoURI);
-
-// define and load mongo user schema
-require("./models/User");
 
 // Create an Express application
 const app = express();
