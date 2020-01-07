@@ -8,13 +8,26 @@ const User = mongoose.model("users"); // User is now a model class - which repre
 
 // Define serialization function and pass it on to passport
 passport.serializeUser((user, done) => {
-    done(null, user.id);
+  done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-    User.findById(id).then(user => {
-        done(null, user);
-    });
+  // (async user => {
+  //   try {
+  //     user = await User.findById(id);
+  //   } catch(e) {
+  //     console.log(new Error(e));
+  //   }
+  // })();
+
+  User.findById(id).then(
+    user => {
+      done(null, user);
+    },
+    error => {
+      console.log(new Error(error));
+    }
+  );
 });
 
 passport.use(
