@@ -35,7 +35,8 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: "/auth/google/callback" // the route that the user will be sent to after they grant permissions to the application
+      callbackURL: "/auth/google/callback", // the route that the user will be sent to after they grant permissions to the application
+      proxy: true // Trust proxified requests. Since we're using Heroku, the actual request is proxied through their load balancer.
     },
 
     async (accessToken, refreshToken, profile, done) => {
@@ -48,7 +49,7 @@ passport.use(
       } else {
         // Create a new instance of user and save it to MongoDB
 
-        const newuser = await new User({
+        await new User({
           googleId: profile.id,
           firstName: profile._json.given_name,
           lastName: profile._json.family_name,
