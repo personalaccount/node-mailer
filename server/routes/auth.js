@@ -32,11 +32,4 @@ module.exports = function(app) {
     req.logout();
     res.redirect("/api/user");
   });
-
-  app.get("/api/user", (req, res) => {
-    if (req.user == null) {
-      res.send('<a href="/auth/google">Log in with Google</a>');
-    }
-    res.send(req.user);
-  });
 };
