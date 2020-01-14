@@ -12,22 +12,23 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  // (async user => {
-  //   try {
-  //     user = await User.findById(id);
-  //   } catch(e) {
-  //     console.log(new Error(e));
-  //   }
-  // })();
-
-  User.findById(id).then(
-    user => {
-      done(null, user);
-    },
-    error => {
-      console.log(new Error(error));
+  (async user => {
+    try {
+      user = await User.findById(id);
+    } catch (e) {
+      console.log(new Error(e));
     }
-  );
+    done(null, user);
+  })();
+
+  // User.findById(id).then(
+  //   user => {
+  //     done(null, user);
+  //   },
+  //   error => {
+  //     console.log(new Error(error));
+  //   }
+  // );
 });
 
 passport.use(
