@@ -17,7 +17,8 @@ const app = express();
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 1000, //cookie lasts 30 days in millisecondskeys
-    keys: [keys.cookieKey]
+    keys: [keys.cookieKey],
+    sameSite: true
   })
 );
 
@@ -32,10 +33,10 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/user", (req, res) => {
-    if (req.user == null) {
-        res.send('<a href="/auth/google">Log in with Google</a>');
-    }
-    res.send('<p><a href="/logout">Log out</a></p>' + '<p>' + req.user + '</p>');
+  if (req.user == null) {
+    res.send('<a href="/auth/google">Log in with Google</a>');
+  }
+  res.send('<p><a href="/logout">Log out</a></p>' + "<p>" + req.user + "</p>");
 });
 
 // Dynamic port binding - environment variable will be injected by Heroku Fallback to 5000 as default
