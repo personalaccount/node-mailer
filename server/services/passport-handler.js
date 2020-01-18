@@ -6,6 +6,8 @@ const keys = require("../config/keys");
 // Fetch the users model from mongoose
 const User = mongoose.model("users"); // User is now a model class - which represents the entire collection
 
+// In order to support login sessions, Passport will serialize and deserialize user instances to and from the session.
+
 // Define serialization function and pass it on to passport
 passport.serializeUser((user, done) => {
   done(null, user.id);

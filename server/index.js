@@ -3,10 +3,10 @@ const express = require("express"); // Express.js
 const mongoose = require("mongoose"); // Interracting with MongoDB
 const cookieSession = require("cookie-session"); // Cookie handling library, used instead of the one provided by Express.js
 const passport = require("passport"); // Passport.js handles authentication and registration, including OAuth
-const keys = require("../config/keys");
+const keys = require("./config/keys");
 
 require("./models/User"); // define and load mongo user schema
-require("./services/passport-handler");
+// require("./services/passport-handler");
 
 // Connect to Mongo (cloud based)
 mongoose.connect(keys.mongoURI);
@@ -17,10 +17,11 @@ const app = express();
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 1000, //cookie lasts 30 days in millisecondskeys
-    keys: [keys.cookieKey],
-    sameSite: true
+    keys: [keys.cookieKey]
   })
 );
+
+// req.session.SameSite = "lax";
 
 app.use(passport.initialize());
 app.use(passport.session());
