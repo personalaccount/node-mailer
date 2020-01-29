@@ -14,14 +14,13 @@ mongoose.connect(keys.mongoURI);
 // Create an Express application
 const app = express();
 
+// Fire up auth. middlewares
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 1000, //cookie lasts 30 days in millisecondskeys
     keys: [keys.cookieKey]
   })
 );
-
-// req.session.SameSite = "lax";
 
 app.use(passport.initialize());
 app.use(passport.session());
