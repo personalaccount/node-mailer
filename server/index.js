@@ -1,12 +1,13 @@
 // Imports
 const express = require("express"); // Express.js
 const mongoose = require("mongoose"); // Interracting with MongoDB
-const cookieSession = require("cookie-session"); // Cookie handling library, used instead of the one provided by Express.js
+const cookieSession = require("cookie-session"); // Cookie-Session library, used instead of the one provided by Express.js
 const passport = require("passport"); // Passport.js handles authentication and registration, including OAuth
 const keys = require("./config/keys");
+const settings = require("./config/app-settings");
 
 require("./models/User"); // define and load mongo user schema
-// require("./services/passport-handler");
+require("./services/passport-handler");
 
 // Connect to Mongo (cloud based)
 mongoose.connect(keys.mongoURI);
@@ -14,10 +15,15 @@ mongoose.connect(keys.mongoURI);
 // Create an Express application
 const app = express();
 
+/*
+    Assign some data to the cookie, cookie-session as a middleware
+    takes data out of that cookie and assigns it to req.session property
+ */
+
 // Fire up auth. middlewares
 app.use(
   cookieSession({
-    maxAge: 30 * 24 * 60 * 1000, //cookie lasts 30 days in millisecondskeys
+    maxAge: settings.cookieMaxAge,
     keys: [keys.cookieKey]
   })
 );
@@ -40,7 +46,7 @@ app.get("/api/user", (req, res) => {
 });
 
 // Dynamic port binding - environment variable will be injected by Heroku Fallback to 5000 as default
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || settings.defaultPort;
 
 // Start the server
 app.listen(PORT);
