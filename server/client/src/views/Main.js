@@ -57,54 +57,48 @@ class Landing extends React.Component {
         <main ref="main">
           <div className="position-relative">
             {/* shape Hero */}
-            <section className="section section-lg section-shaped pb-250">
-              <div className="shape shape-style-1 shape-default">
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-              </div>
+            <section className="section section-lg section-shaped pb-250 bg-gradient-warning">
               <Container className="py-lg-md d-flex">
                 <div className="col px-0">
                   <Row>
                     <Col lg="6">
                       <h1 className="display-3 text-white">
-                        Beautiful and easy
-                        <span>Recruiting Management</span>
+                          Beautiful and easy
+                          <span>Recruiting Management</span>
                       </h1>
                       <p className="lead text-white">
-                        Cloud-based solution for recruiting companies to
-                        simplify workflow, lower rates while increasing margins and improve
-                        candidates’ job seeking experience
+                          Cloud-based solution for recruiting companies to
+                          simplify workflow, lower rates while increasing margins and improve
+                          candidates’ job seeking experience
                       </p>
                       <div className="btn-wrapper">
                         <Button
-                          className="btn-icon mb-3 mb-sm-0"
-                          color="info"
-                          href="https://demos.creative-tim.com/argon-design-system-react/#/documentation/alerts?ref=adsr-landing-page"
+                            className="btn-icon mb-3 mb-sm-0"
+                            color="secondary"
+                            size="lg"
+                            href=""
                         >
-                          <span className="btn-inner--icon mr-1">
-                            <i className="fa fa-code" />
-                          </span>
-                          <span className="btn-inner--text">Components</span>
+                          <span className="btn-inner--text">Get a demo</span>
                         </Button>
                         <Button
-                          className="btn-white btn-icon mb-3 mb-sm-0 ml-1"
-                          color="default"
-                          href="https://www.creative-tim.com/product/argon-design-system-react?ref=adsr-landing-page"
+                            className="btn-icon mb-3 mb-sm-0 ml-1"
+                            color="default"
+                            size="lg"
+                            href=""
                         >
-                          <span className="btn-inner--icon mr-1">
-                            <i className="ni ni-cloud-download-95" />
-                          </span>
                           <span className="btn-inner--text">
-                            Download React
+                            start a trial
                           </span>
                         </Button>
+                      </div>
+                    </Col>
+                    <Col lg="6">
+                      <div className="position-relative pl-md-5 p-3">
+                        <img
+                            alt="..."
+                            className="img-center img-fluid"
+                            src={require("assets/img/ill/ill-2.svg")}
+                        />
                       </div>
                     </Col>
                   </Row>
