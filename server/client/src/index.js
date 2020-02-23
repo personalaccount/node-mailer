@@ -52,7 +52,7 @@ ReactDOM.render(
         render={props => <Profile {...props} />}
       />
       <Route
-        path="/register-page"
+        path="/register"
         exact
         render={props => <Register {...props} />}
       />

@@ -35,7 +35,7 @@ import {
 } from "reactstrap";
 
 // core components
-import DemoNavbar from "components/Navbars/DemoNavbar.js";
+import DemoNavbar from "components/Navbars/DefaultNavbar.js";
 import SimpleFooter from "components/Footers/SimpleFooter.js";
 
 class Register extends React.Component {
@@ -50,7 +50,7 @@ class Register extends React.Component {
         <DemoNavbar />
         <main ref="main">
           <section className="section section-shaped section-lg">
-            <div className="shape shape-style-1 bg-gradient-default">
+            <div className="shape shape-style-1 bg-gradient-warning">
               <span />
               <span />
               <span />
@@ -60,30 +60,16 @@ class Register extends React.Component {
               <span />
               <span />
             </div>
-            <Container className="pt-lg-7">
+            <Container className="pt-lg-5">
               <Row className="justify-content-center">
                 <Col lg="5">
                   <Card className="bg-secondary shadow border-0">
                     <CardHeader className="bg-white pb-5">
                       <div className="text-muted text-center mb-3">
-                        <small>Sign up with</small>
+                        Sign up with
                       </div>
                       <div className="text-center">
-                        <Button
-                          className="btn-neutral btn-icon mr-4"
-                          color="default"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <span className="btn-inner--icon mr-1">
-                            <img
-                              alt="..."
-                              src={require("assets/img/icons/common/github.svg")}
-                            />
-                          </span>
-                          <span className="btn-inner--text">Github</span>
-                        </Button>
-                        <Button
+                        <Button block
                           className="btn-neutral btn-icon ml-1"
                           color="default"
                           href="#pablo"
@@ -101,7 +87,7 @@ class Register extends React.Component {
                     </CardHeader>
                     <CardBody className="px-lg-5 py-lg-5">
                       <div className="text-center text-muted mb-4">
-                        <small>Or sign up with credentials</small>
+                        Or sign up with credentials
                       </div>
                       <Form role="form">
                         <FormGroup>
