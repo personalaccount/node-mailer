@@ -110,7 +110,7 @@ class DemoNavbar extends React.Component {
                       <div className="dropdown-menu-inner">
                         <Media
                           className="d-flex align-items-center"
-                          href=""
+                          href="/"
                           target="_blank"
                         >
                           <div className="icon icon-shape bg-gradient-primary rounded-circle text-white">
@@ -127,7 +127,7 @@ class DemoNavbar extends React.Component {
                         </Media>
                         <Media
                           className="d-flex align-items-center"
-                          href=""
+                          href="/"
                           target="_blank"
                         >
                           <div className="icon icon-shape bg-gradient-success rounded-circle text-white">
@@ -151,10 +151,10 @@ class DemoNavbar extends React.Component {
                       <span className="nav-link-inner--text">Plans</span>
                     </DropdownToggle>
                     <DropdownMenu>
-                      <DropdownItem to="/index" tag={Link}>
+                      <DropdownItem to="/" tag={Link}>
                         Enterprise
                       </DropdownItem>
-                      <DropdownItem to="/landing-page" tag={Link}>
+                      <DropdownItem to="/" tag={Link}>
                         Business
                       </DropdownItem>
                     </DropdownMenu>

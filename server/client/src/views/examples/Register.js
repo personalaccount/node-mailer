@@ -64,16 +64,15 @@ class Register extends React.Component {
               <Row className="justify-content-center">
                 <Col lg="5">
                   <Card className="bg-secondary shadow border-0">
-                    <CardHeader className="bg-white pb-5">
-                      <div className="text-muted text-center mb-3">
+                    <CardHeader className="bg-gradient-primary pb-5">
+                      <div className="text-white text-center mb-3">
                         Sign up with
                       </div>
                       <div className="text-center">
                         <Button block
                           className="btn-neutral btn-icon ml-1"
                           color="default"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
+                          href="/auth/google"
                         >
                           <span className="btn-inner--icon mr-1">
                             <img
