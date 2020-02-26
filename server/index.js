@@ -45,6 +45,10 @@ app.get("/api/user", (req, res) => {
   res.send('<p><a href="/logout">Log out</a></p>' + "<p>" + req.user + "</p>");
 });
 
+if (process.env.NODE_ENV === 'production') {
+
+}
+
 // Dynamic port binding - environment variable will be injected by Heroku Fallback to 5000 as default
 const PORT = process.env.PORT || settings.defaultPort;
 

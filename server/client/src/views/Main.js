@@ -81,7 +81,7 @@ class Landing extends React.Component {
                             className="btn-icon mb-3 mb-sm-0 ml-1"
                             color="default"
                             size="lg"
-                            href=""
+                            href="/register"
                         >
                           <span className="btn-inner--text">
                             start a trial
