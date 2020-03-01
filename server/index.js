@@ -45,8 +45,15 @@ app.get("/api/user", (req, res) => {
   res.send('<p><a href="/logout">Log out</a></p>' + "<p>" + req.user + "</p>");
 });
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
+  // Express will serve production assets - main.js, main.css
+  app.use(express.static("client/build"));
 
+  // Express will serve index.html if it doesn't recognize the route
+  const path = require("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
 }
 
 // Dynamic port binding - environment variable will be injected by Heroku Fallback to 5000 as default

@@ -18,6 +18,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
 
 import "assets/vendor/nucleo/css/nucleo.css";
 import "assets/vendor/font-awesome/css/font-awesome.min.css";
@@ -31,15 +33,13 @@ import Login from "views/examples/Login.js";
 import Profile from "views/examples/Profile.js";
 import Register from "views/examples/Register.js";
 
+const store = createStore(() => [], {}, applyMiddleware());
+
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Route path="/" exact render={props => <Main {...props} />} />
-      <Route
-          path="/index"
-          exact
-          render={props => <Index {...props} />}
-      />
+      <Route path="/index" exact render={props => <Index {...props} />} />
       <Route
         path="/landing-page"
         exact
@@ -51,11 +51,7 @@ ReactDOM.render(
         exact
         render={props => <Profile {...props} />}
       />
-      <Route
-        path="/register"
-        exact
-        render={props => <Register {...props} />}
-      />
+      <Route path="/register" exact render={props => <Register {...props} />} />
       <Redirect to="/" />
     </Switch>
   </BrowserRouter>,
