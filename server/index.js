@@ -3,6 +3,7 @@ const express = require("express"); // Express.js
 const mongoose = require("mongoose"); // Interracting with MongoDB
 const cookieSession = require("cookie-session"); // Cookie-Session library, used instead of the one provided by Express.js
 const passport = require("passport"); // Passport.js handles authentication and registration, including OAuth
+const bodyParser = require('body-parser');
 const keys = require("./config/keys");
 const settings = require("./config/app-settings");
 
@@ -21,6 +22,7 @@ const app = express();
  */
 
 // Fire up auth. middlewares
+app.use(bodyParser.json());
 app.use(
   cookieSession({
     maxAge: settings.cookieMaxAge,
@@ -34,9 +36,9 @@ app.use(passport.session());
 // Routes
 require("./routes/auth")(app); //auth.js file returns an anonymous function (module.exports)
 
-app.get("/", (req, res) => {
-  res.redirect("/api/user");
-});
+// app.get("/", (req, res) => {
+//   res.redirect("/api/user");
+// });
 
 app.get("/api/user", (req, res) => {
   if (req.user == null) {
@@ -45,14 +47,14 @@ app.get("/api/user", (req, res) => {
   res.send('<p><a href="/logout">Log out</a></p>' + "<p>" + req.user + "</p>");
 });
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === 'production') {
   // Express will serve production assets - main.js, main.css
-  app.use(express.static("client/build"));
+  app.use(express.static('client/build'));
 
   // Express will serve index.html if it doesn't recognize the route
-  const path = require("path");
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
 
