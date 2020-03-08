@@ -35,17 +35,11 @@ app.use(passport.session());
 
 // Routes
 require("./routes/auth")(app); //auth.js file returns an anonymous function (module.exports)
+require("./routes/user")(app); //auth.js file returns an anonymous function (module.exports)
 
 // app.get("/", (req, res) => {
 //   res.redirect("/api/user");
 // });
-
-app.get("/api/user", (req, res) => {
-  if (req.user == null) {
-    res.send('<a href="/auth/google">Log in with Google</a>');
-  }
-  res.send('<p><a href="/logout">Log out</a></p>' + "<p>" + req.user + "</p>");
-});
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve production assets - main.js, main.css
