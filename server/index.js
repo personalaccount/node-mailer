@@ -35,7 +35,7 @@ app.use(passport.session());
 
 // Routes
 require("./routes/auth")(app); //auth.js file returns an anonymous function (module.exports)
-require("./routes/user")(app); //auth.js file returns an anonymous function (module.exports)
+require("./routes/user")(app);
 
 // app.get("/", (req, res) => {
 //   res.redirect("/api/user");

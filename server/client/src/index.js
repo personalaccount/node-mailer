@@ -11,7 +11,7 @@ import App from "./components/App";
 import reducers from "./reducers";
 
 // Use createStore helper to create a new instance of a redux store, passing reducers as arguments
-const store = createStore(() => [], {}, applyMiddleware(reduxThunk));
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 // Pass a component instance <App />, which is created by using jsx tags as a second argument
 // provide a reference to an existing Dom node inside an existing html document
