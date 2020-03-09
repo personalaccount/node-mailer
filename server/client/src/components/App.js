@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "tmp-views/Header.js";
+import Landing from "tmp-views/Landing.js";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
@@ -14,7 +15,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Header />
-        {/*<Route exact path="/" component={Landing} />*/}
+        <Route exact path="/" component={Landing} />
         {/*<Route exact path="/candidates" component={Candidates} />*/}
         {/*<Route exact path="/candidates/new" component={CandidatesNew} />*/}
       </BrowserRouter>
