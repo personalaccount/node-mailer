@@ -7,11 +7,19 @@ class Header extends React.Component {
   renderContent() {
     switch (this.props.auth) {
       case null:
-        return "Waiting for request to be resolved";
+        return;
       case false:
-        return "Logged out";
+        return (
+          <li>
+            <a href="/auth/google">Login with Google</a>
+          </li>
+        );
       default:
-        return "Logged in";
+        return (
+          <li>
+            <a href="/logout">Logout</a>
+          </li>
+        );
     }
   }
   render() {
@@ -20,13 +28,10 @@ class Header extends React.Component {
         <div className="nav-wrapper">
           <div className="container">
             <a href="/" className="left brand-logo">
-              Logo
+              Recruforce
             </a>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
-                {this.renderContent()}
-              {/*<li>*/}
-              {/*  <a href="/auth/google">Login with Google</a>*/}
-              {/*</li>*/}
+              {this.renderContent()}
             </ul>
           </div>
         </div>

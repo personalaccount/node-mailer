@@ -20,7 +20,7 @@ module.exports = function(app) {
     "/auth/google/callback",
     passport.authenticate("google"),
     (req, res) => {
-      res.redirect("/api/user");
+      res.redirect("/user");
     }
   );
 
@@ -31,6 +31,7 @@ module.exports = function(app) {
     */
     // console.log("Logging out...");
     req.logout();
-    res.redirect("/api/user");
+    // res.redirect("/api/user");
+    res.redirect("/");
   });
 };
