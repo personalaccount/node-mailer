@@ -19,6 +19,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 // JavaScript plugin that hides or shows a component based on your scroll
 import Headroom from "headroom.js";
+
+// Hook up the component to redux store
+import { connect } from "react-redux";
+
 // reactstrap components
 import {
   Button,
@@ -39,7 +43,7 @@ import {
   UncontrolledTooltip
 } from "reactstrap";
 
-class DemoNavbar extends React.Component {
+class DefaultNavbar extends React.Component {
   componentDidMount() {
     let headroom = new Headroom(document.getElementById("navbar-main"));
     // initialise
@@ -61,6 +65,43 @@ class DemoNavbar extends React.Component {
       collapseClasses: ""
     });
   };
+
+  renderRightHandButtons() {
+    switch (this.props.auth) {
+      case null:
+        return;
+      case false:
+        return (
+          <Nav className="align-items-lg-center ml-lg-auto" navbar>
+            <NavItem>
+              <NavLink href="/login">
+                <span className="nav-link-inner--text ml-1">Login</span>
+              </NavLink>
+            </NavItem>
+            <NavItem className="d-none d-lg-block ml-lg-4">
+              <Button color="default" size="sm" href="/register">
+                <span className="nav-link-inner--text ml-1">start a trial</span>
+              </Button>
+            </NavItem>
+          </Nav>
+        );
+      default:
+        return (
+            <Nav className="align-items-lg-center ml-lg-auto" navbar>
+                <NavItem>
+                    <NavLink href="/logout">
+                        <span className="nav-link-inner--text ml-1">Logout</span>
+                    </NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink href="/user">
+                        <span className="nav-link-inner--text ml-1"><i className="ni ni-circle-08"></i>My Account</span>
+                    </NavLink>
+                </NavItem>
+            </Nav>
+        );
+    }
+  }
 
   render() {
     return (
@@ -88,9 +129,7 @@ class DemoNavbar extends React.Component {
                 <div className="navbar-collapse-header">
                   <Row>
                     <Col className="collapse-brand" xs="6">
-                      <Link to="/">
-                        Recruforce
-                      </Link>
+                      <Link to="/">Recruforce</Link>
                     </Col>
                     <Col className="collapse-close" xs="6">
                       <button className="navbar-toggler" id="navbar_global">
@@ -138,7 +177,8 @@ class DemoNavbar extends React.Component {
                               Industries
                             </h6>
                             <p className="description d-none d-md-inline-block mb-0">
-                              Learn whether your business should be using Recruforce.
+                              Learn whether your business should be using
+                              Recruforce.
                             </p>
                           </Media>
                         </Media>
@@ -168,32 +208,11 @@ class DemoNavbar extends React.Component {
                   </NavItem>
                   <NavItem>
                     <NavLink href="/login">
-                      <span className="nav-link-inner--text ml-1">
-                        Support
-                      </span>
+                      <span className="nav-link-inner--text ml-1">Support</span>
                     </NavLink>
                   </NavItem>
                 </Nav>
-                <Nav className="align-items-lg-center ml-lg-auto" navbar>
-                  <NavItem>
-                    <NavLink href="/login">
-                      <span className="nav-link-inner--text ml-1">
-                        Login
-                      </span>
-                    </NavLink>
-                  </NavItem>
-                  <NavItem className="d-none d-lg-block ml-lg-4">
-                    <Button
-                      color="default"
-                      size="sm"
-                      href="/register"
-                    >
-                      <span className="nav-link-inner--text ml-1">
-                        start a trial
-                      </span>
-                    </Button>
-                  </NavItem>
-                </Nav>
+                {this.renderRightHandButtons()}
               </UncontrolledCollapse>
             </Container>
           </Navbar>
@@ -202,5 +221,8 @@ class DemoNavbar extends React.Component {
     );
   }
 }
+function mapStateToProps({ auth }) {
+    return { auth: auth };
+}
 
-export default DemoNavbar;
+export default connect(mapStateToProps)(DefaultNavbar);
