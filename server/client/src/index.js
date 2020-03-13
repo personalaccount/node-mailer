@@ -7,7 +7,7 @@ import { createStore, applyMiddleware } from "redux";
 
 import reduxThunk from "redux-thunk";
 
-import App from "./components/App-orig";
+import App from "./components/App";
 import reducers from "./reducers";
 
 // Use createStore helper to create a new instance of a redux store, passing reducers as arguments
