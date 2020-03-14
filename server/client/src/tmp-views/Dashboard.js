@@ -5,7 +5,7 @@ import {FETCH_USER} from "../actions/types";
 
 const Dashboard = () => {
     return (
-        <div>
+        <div className="container">
             {/*<SurveyList />*/}
             Hello! {FETCH_USER}
             <div className="fixed-action-btn">

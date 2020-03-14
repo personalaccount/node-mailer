@@ -18,7 +18,7 @@ class App extends React.Component {
       <BrowserRouter>
         <Header />
         <Route exact path="/" component={Landing} />
-        <Route exact path="/user" component={Dashboard} />
+        <Route exact path="/account" component={Dashboard} />
         {/*<Route exact path="/candidates/new" component={CandidatesNew} />*/}
       </BrowserRouter>
     );

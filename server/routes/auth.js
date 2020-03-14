@@ -20,7 +20,7 @@ module.exports = function(app) {
     "/auth/google/callback",
     passport.authenticate("google"),
     (req, res) => {
-      res.redirect("/user");
+      res.redirect("/account");
     }
   );
 
@@ -29,9 +29,7 @@ module.exports = function(app) {
       The logout() function is automatically attached by passport to the request object.
       It takes the cookie that contains the user's id and removes the id from the cookie.
     */
-    // console.log("Logging out...");
     req.logout();
-    // res.redirect("/api/user");
     res.redirect("/");
   });
 };
