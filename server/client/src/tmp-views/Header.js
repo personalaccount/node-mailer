@@ -2,6 +2,7 @@ import React from "react";
 
 // Hook up the component to redux store
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class Header extends React.Component {
   renderContent() {
@@ -27,9 +28,12 @@ class Header extends React.Component {
       <nav>
         <div className="nav-wrapper">
           <div className="container">
-            <a href="/" className="left brand-logo">
+            <Link
+                to={this.props.auth ? '/account' : '/'}
+                className="left brand-logo"
+            >
               Recruforce
-            </a>
+            </Link>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               {this.renderContent()}
             </ul>

@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "../tmp-views/Header.js";
-import Landing from "../tmp-views/Landing.js";
-import Dashboard from "../tmp-views/Dashboard.js";
+import Header from "../tmp-views/Header";
+import Landing from "../tmp-views/Landing";
+import Dashboard from "../tmp-views/Dashboard";
 
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
