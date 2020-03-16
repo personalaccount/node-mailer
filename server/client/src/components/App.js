@@ -19,7 +19,6 @@ class App extends React.Component {
         <Header />
         <Route exact path="/" component={Landing} />
         <Route exact path="/account" component={Dashboard} />
-        {/*<Route exact path="/candidates/new" component={CandidatesNew} />*/}
       </BrowserRouter>
     );
   }
