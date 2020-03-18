@@ -3,6 +3,7 @@ import React from "react";
 // Hook up the component to redux store
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Billing from "../views/Billing";
 
 class Header extends React.Component {
   renderContent() {
@@ -16,11 +17,14 @@ class Header extends React.Component {
           </li>
         );
       default:
-        return (
+        return [
+          <li>
+            <Billing />
+          </li>,
           <li>
             <a href="/logout">Logout</a>
           </li>
-        );
+        ];
     }
   }
   render() {
@@ -29,8 +33,8 @@ class Header extends React.Component {
         <div className="nav-wrapper">
           <div className="container">
             <Link
-                to={this.props.auth ? '/account' : '/'}
-                className="left brand-logo"
+              to={this.props.auth ? "/account" : "/"}
+              className="left brand-logo"
             >
               Recruforce
             </Link>
