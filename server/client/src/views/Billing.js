@@ -3,6 +3,7 @@ import StripeCheckout from "react-stripe-checkout";
 
 class Billing extends Component {
   render() {
+    debugger;
     return (
       <StripeCheckout
         amount={500}
@@ -13,4 +14,4 @@ class Billing extends Component {
   }
 }
 
-export default Payments;
+export default Billing;
