@@ -18,10 +18,10 @@ class Header extends React.Component {
         );
       default:
         return [
-          <li>
+          <li key="0">
             <Billing />
           </li>,
-          <li>
+          <li key="1">
             <a href="/logout">Logout</a>
           </li>
         ];
@@ -36,7 +36,7 @@ class Header extends React.Component {
               to={this.props.auth ? "/account" : "/"}
               className="left brand-logo"
             >
-              Recruforce
+              {process.env.REACT_APP_APP_NAME}
             </Link>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               {this.renderContent()}
