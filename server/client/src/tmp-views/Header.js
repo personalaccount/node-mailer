@@ -21,6 +21,9 @@ class Header extends React.Component {
           <li key="0">
             <Billing />
           </li>,
+            <li key="2">
+              Balance:
+            </li>,
           <li key="1">
             <a href="/logout">Logout</a>
           </li>
