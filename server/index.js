@@ -34,8 +34,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-require("./routes/auth")(app); //auth.js file returns an anonymous function (module.exports)
-require("./routes/user")(app);
+require("./routes/authRoutes")(app); //authRoutes.js file returns an anonymous function (module.exports)
+require("./routes/userRoutes")(app);
+require("./routes/billingRoutes")(app);
 
 // app.get("/", (req, res) => {
 //   res.redirect("/api/user");
