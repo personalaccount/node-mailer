@@ -9,8 +9,8 @@ module.exports = app => {
       {
         amount: 2000,
         currency: "usd",
-        source: "tok_mastercard",
-        description: "My First Test Charge (created for API docs)"
+        source: "",
+        description: ""
       },
       function(err, charge) {
         // asynchronously called
