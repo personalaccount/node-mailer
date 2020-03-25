@@ -32,9 +32,9 @@ class Header extends React.Component {
   }
   render() {
     return (
-      <nav>
+        <div className="container">
+        <nav>
         <div className="nav-wrapper">
-          <div className="container">
             <Link
               to={this.props.auth ? "/account" : "/"}
               className="left brand-logo"
@@ -45,8 +45,8 @@ class Header extends React.Component {
               {this.renderContent()}
             </ul>
           </div>
-        </div>
       </nav>
+        </div>
     );
   }
 }
