@@ -47,7 +47,7 @@ passport.use(
       const existingUser = await User.findOne({ googleId: profile.id });
 
       if (existingUser) {
-        console.log("User with googleId:" + profile.id + " already exists!");
+        console.log("User with googleId: " + profile.id + " already exists!");
         done(null, existingUser);
       } else {
         // Create a new instance of user and save it to MongoDB
