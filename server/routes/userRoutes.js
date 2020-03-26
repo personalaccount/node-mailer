@@ -1,6 +1,9 @@
 module.exports = app => {
   app.get("/api/user", (req, res) => {
-    console.log(req.user);
+
+    let msg = (req.user === undefined) ? "User not logged in" : req.user
+    console.log(msg)
+
     res.send(req.user);
   });
 };

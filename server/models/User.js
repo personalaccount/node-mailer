@@ -9,7 +9,8 @@ const userSchema = new Schema({
   lastName: String,
   email: String,
   accessToken: String,
-  refreshToken: String
+  refreshToken: String,
+  balance: {type: Number, default: 0}
 });
 
 // Load the user schema into Mongoose
