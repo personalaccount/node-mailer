@@ -38,10 +38,6 @@ require("./routes/authRoutes")(app); //authRoutes.js file returns an anonymous f
 require("./routes/userRoutes")(app);
 require("./routes/billingRoutes")(app);
 
-// app.get("/", (req, res) => {
-//   res.redirect("/api/user");
-// });
-
 if (process.env.NODE_ENV === 'production') {
   // Express will serve production assets - main.js, main.css
   app.use(express.static('client/build'));

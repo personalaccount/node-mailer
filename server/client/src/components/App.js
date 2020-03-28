@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../tmp-views/Header";
 import Landing from "../tmp-views/Landing";
 import Dashboard from "../tmp-views/Dashboard";
+import Login from "../tmp-views/Login";
 
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
@@ -19,6 +20,7 @@ class App extends React.Component {
         <Header />
         <Route exact path="/" component={Landing} />
         <Route exact path="/account" component={Dashboard} />
+        <Route exact path="/login" component={Login} />
       </BrowserRouter>
     );
   }

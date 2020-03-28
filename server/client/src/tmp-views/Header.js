@@ -9,7 +9,9 @@ class Header extends React.Component {
   renderContent() {
     switch (this.props.auth) {
       case null:
-        return;
+        return(
+            <li>Loading...</li>
+        );
       case false:
         return (
           <li>
