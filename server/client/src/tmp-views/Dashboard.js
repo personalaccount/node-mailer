@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Dashboard = () => {
-  return class extends React.Component {
+class Dashboard extends React.Component {
     render() {
       return (
         <div className="container">
@@ -15,7 +14,6 @@ const Dashboard = () => {
         </div>
       );
     }
-  };
-};
+}
 
 export default Dashboard;
