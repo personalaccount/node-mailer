@@ -30,7 +30,7 @@ class App extends React.Component {
           />
           <Route path="/login" exact render={props => <Login {...props} />} />
           <Route
-            path="/user"
+            path="/account"
             exact
             render={props => <Profile {...props} />}
           />

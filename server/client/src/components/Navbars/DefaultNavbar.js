@@ -51,7 +51,8 @@ class DefaultNavbar extends React.Component {
   }
   state = {
     collapseClasses: "",
-    collapseOpen: false
+    collapseOpen: false,
+    authenticated: false
   };
 
   onExiting = () => {
@@ -69,7 +70,7 @@ class DefaultNavbar extends React.Component {
   renderRightHandButtons() {
     switch (this.props.auth) {
       case null:
-        return;
+        return "Loading...";
       case false:
         return (
           <Nav className="align-items-lg-center ml-lg-auto" navbar>
@@ -87,18 +88,21 @@ class DefaultNavbar extends React.Component {
         );
       default:
         return (
-            <Nav className="align-items-lg-center ml-lg-auto" navbar>
-                <NavItem>
-                    <NavLink href="/logout">
-                        <span className="nav-link-inner--text ml-1">Logout</span>
-                    </NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink href="/user">
-                        <span className="nav-link-inner--text ml-1"><i className="ni ni-circle-08"></i>My Account</span>
-                    </NavLink>
-                </NavItem>
-            </Nav>
+          <Nav className="ml-lg-auto" navbar>
+            <NavItem>
+              <NavLink href="/logout">
+                <span className="nav-link-inner--text ml-1">Logout</span>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/account">
+                <span className="nav-link-inner--text ml-1">
+                  <i className="ni ni-circle-08"></i>
+                  {this.props.auth.firstName}
+                </span>
+              </NavLink>
+            </NavItem>
+          </Nav>
         );
     }
   }
@@ -222,7 +226,7 @@ class DefaultNavbar extends React.Component {
   }
 }
 function mapStateToProps({ auth }) {
-    return { auth: auth };
+  return { auth: auth };
 }
 
 export default connect(mapStateToProps)(DefaultNavbar);

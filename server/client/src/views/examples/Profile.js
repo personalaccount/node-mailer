@@ -18,11 +18,12 @@
 import React from "react";
 
 // reactstrap components
-import { Button, Card, Container, Row, Col } from "reactstrap";
+import { Button, Card, Container, Row, Col} from "reactstrap";
 
 // core components
 import Navbar from "components/Navbars/DefaultNavbar.js";
 import SimpleFooter from "components/Footers/SimpleFooter.js";
+import { connect } from "react-redux";
 
 class Profile extends React.Component {
   componentDidMount() {
@@ -30,6 +31,7 @@ class Profile extends React.Component {
     document.scrollingElement.scrollTop = 0;
     this.refs.main.scrollTop = 0;
   }
+
   render() {
     return (
       <>
@@ -123,7 +125,7 @@ class Profile extends React.Component {
                   </Row>
                   <div className="text-center mt-5">
                     <h3>
-                      Jessica Jones{" "}
+                      Hello Username!
                       <span className="font-weight-light">, 27</span>
                     </h3>
                     <div className="h6 font-weight-300">
@@ -166,4 +168,9 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile;
+function mapStateToProps({ auth }) {
+  return { auth: auth };
+}
+
+export default connect(mapStateToProps)(Profile);
+// export default Profile;
