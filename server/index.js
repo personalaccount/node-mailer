@@ -8,6 +8,7 @@ const keys = require("./config/keys");
 const settings = require("./config/app-settings");
 
 require("./models/User"); // define and load mongo user schema
+require("./models/Survey"); // define and load mongo survey schema
 require("./services/passport-handler");
 
 // Connect to Mongo (cloud based)
