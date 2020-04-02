@@ -1,15 +1,12 @@
 import React from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import Header from "../tmp-views/Header";
+import Landing from "../tmp-views/Landing";
+import Dashboard from "../tmp-views/Dashboard";
+import Login from "../tmp-views/Login";
 
+import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-
-import Main from "../views/Main";
-import Index from "../views/Index";
-import Login from "../views/examples/Login";
-import Landing from "../views/examples/Landing";
-import Profile from "../views/examples/Profile";
-import Register from "../views/examples/Register";
 
 // Create App component
 class App extends React.Component {
@@ -20,27 +17,10 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <Switch>
-          <Route path="/" exact render={props => <Main {...props} />} />
-          <Route path="/index" exact render={props => <Index {...props} />} />
-          <Route
-            path="/landing-page"
-            exact
-            render={props => <Landing {...props} />}
-          />
-          <Route path="/login" exact render={props => <Login {...props} />} />
-          <Route
-            path="/account"
-            exact
-            render={props => <Profile {...props} />}
-          />
-          <Route
-            path="/register"
-            exact
-            render={props => <Register {...props} />}
-          />
-          <Redirect to="/" />
-        </Switch>
+        <Header />
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/account" component={Dashboard} />
+        <Route exact path="/login" component={Login} />
       </BrowserRouter>
     );
   }

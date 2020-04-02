@@ -51,8 +51,7 @@ class DefaultNavbar extends React.Component {
   }
   state = {
     collapseClasses: "",
-    collapseOpen: false,
-    authenticated: false
+    collapseOpen: false
   };
 
   onExiting = () => {
