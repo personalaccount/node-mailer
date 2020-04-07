@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const requireLogin = require("../middlewares/requireLogin"); // require auth middleware to check if the user is logged in
 const requireCredits = require("../middlewares/requireCredits");
 
+const Mailer = require("../services/Mailer");
+const defaultSurveyTemplate = require("../services/emailTemplates/defaultTemplate");
+
 const Survey = mongoose.model("surveys");
 
 module.exports = app => {
@@ -16,5 +19,7 @@ module.exports = app => {
       _user: req.user.id,
       dateSent: Date.now()
     });
+
+    const mailer = new Mailer(survey, defaultSurveyTemplate(survey));
   });
 };
