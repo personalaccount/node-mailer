@@ -13,6 +13,7 @@ class Mailer extends helper.Mail {
     this.recipients = this.formatAddresses(recipients);
 
     this.addContent(this.body);
+    this.addClickTracking(); // Enable click tracking inside of an email
   }
 
   formatAddresses(recipients) {
@@ -20,6 +21,14 @@ class Mailer extends helper.Mail {
     return recipients.map(({ email }) => {
       return new helper.Email(email);
     });
+  }
+
+  addClickTracking() {
+    const trackingSettings = new helper.TrackingSettings();
+    const clickTracking = new helper.ClickTracking(true, true);
+
+    trackingSettings.setClickTracking(clickTracking);
+    this.addTrackingSettings(trackingSettings);
   }
 }
 
