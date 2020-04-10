@@ -7,6 +7,7 @@ class Mailer extends helper.Mail {
     const { subject, recipients } = survey;
     super();
 
+    this.sgApi = sendgrid(keys.sendGridKey);
     this.from_email = new.helper.Email("no-reply@recruiforce");
     this.subject = subject;
     this.body = new helper.Content("text/html", content);
@@ -38,6 +39,17 @@ class Mailer extends helper.Mail {
       personalize.addTo(recipient);
     });
     this.addPersonalization(personalize);
+  }
+
+  async send() {
+    const request = this.sgApi.emptyRequest({
+      method: "POST",
+      path: "v3/mail/send",
+      body: this.toJSON()
+    });
+
+    this.sgApi.API(request);
+    return response;
   }
 }
 
