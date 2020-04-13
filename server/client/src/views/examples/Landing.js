@@ -265,8 +265,7 @@ class Landing extends React.Component {
                     <h3>Awesome features</h3>
                     <p>
                       The kit comes with three pre-built pages to help you get
-                      started faster. You can change the text and images and
-                      you're good to go.
+                      started faster.
                     </p>
                     <ul className="list-unstyled mt-5">
                       <li className="py-2">
